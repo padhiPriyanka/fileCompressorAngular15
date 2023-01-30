@@ -1,0 +1,44 @@
+.container {
+
+    color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  mat-card{
+    width:18rem;
+    height: 10rem;
+    border-radius: 10px;
+    background-color: rgb(207, 86, 86);
+    align-items: center;
+    display: flex;
+    margin-top: 10rem;
+  }
+  #fileInput {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+  }
+  
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+    padding: 0;
+  }
+  
+  .mat-toolbar-single-row button {
+    width: 100px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    display:inline-block;
+  };

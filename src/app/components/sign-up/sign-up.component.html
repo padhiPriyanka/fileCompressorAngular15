@@ -1,0 +1,50 @@
+<div class="container">
+    <mat-card>
+
+      <mat-card-title>Create your account</mat-card-title><br>
+
+      <mat-card-actions>
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput  [formControl]="userName" required>
+          <mat-error *ngIf="email.invalid">{{getUserNameMessage()}}</mat-error>
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+      </mat-card-actions>
+
+      <mat-card-actions>
+        <mat-form-field appearance="fill">
+          <mat-label>Email or Username</mat-label>
+          <input matInput placeholder="abc@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-icon matSuffix>mail_outline</mat-icon>
+        </mat-form-field>
+      </mat-card-actions>
+        
+        <mat-card-actions>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+            <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-card-actions>
+
+        <mat-card-actions>
+            <input  type="checkbox" [(ngModel)]="checked"><span>I accept the<a>Terms of Use</a> and the <a>Privacy Policy</a></span>
+        </mat-card-actions>
+           
+        <mat-card-actions>
+          <div>
+            <button mat-raised-button >SIGN UP</button>
+          </div>
+        </mat-card-actions>
+
+        <mat-card-content>
+          <p>Already member? <span><a routerLink="/login">Log In</a></span></p>
+        </mat-card-content>
+
+    </mat-card>
+</div>
