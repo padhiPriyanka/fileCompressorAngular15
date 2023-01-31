@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 5rem;
   
   }
   mat-card{
@@ -30,7 +31,7 @@
     color: rgb(49, 47, 47);
     font-weight: 550;
  }
- .mat-mdc-raised-button.mat-unthemed {
+ /* .mat-mdc-raised-button.mat-unthemed {
   --mdc-protected-button-container-color: #d43e3e;
   --mdc-protected-button-label-text-color: #fff;
-}
+} */

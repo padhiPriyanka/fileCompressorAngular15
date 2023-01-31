@@ -6,17 +6,17 @@
       <mat-card-actions>
         <mat-form-field appearance="fill">
           <mat-label>Username</mat-label>
-          <input matInput  [formControl]="userName" required>
-          <mat-error *ngIf="email.invalid">{{getUserNameMessage()}}</mat-error>
+          <input matInput  [formControl]="name" name="name"   required [(ngModel)]="user.name" >
+          <mat-error *ngIf="name.invalid">{{getUserNameMessage()}}</mat-error>
           <mat-icon matSuffix>account_circle</mat-icon>
         </mat-form-field>
       </mat-card-actions>
 
       <mat-card-actions>
         <mat-form-field appearance="fill">
-          <mat-label>Email or Username</mat-label>
-          <input matInput placeholder="abc@example.com" [formControl]="email" required>
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-label>Email</mat-label>
+          <input matInput name="email" placeholder="abc@example.com" [formControl]="email" required [(ngModel)]="user.email">
+          <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
           <mat-icon matSuffix>mail_outline</mat-icon>
         </mat-form-field>
       </mat-card-actions>
@@ -24,7 +24,7 @@
         <mat-card-actions>
           <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+            <input matInput name="password" [type]="hide ? 'password' : 'text'" [formControl]="password" required [(ngModel)]="user.password">
             <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -38,7 +38,7 @@
            
         <mat-card-actions>
           <div>
-            <button mat-raised-button >SIGN UP</button>
+            <button type="button" [disabled]="selectedCheckbox()" (click)="onSubmit()">SIGN UP</button>
           </div>
         </mat-card-actions>
 
