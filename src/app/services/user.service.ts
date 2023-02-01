@@ -10,13 +10,13 @@ import { User } from '../models/user.model';
 
 export class UserService {
 
-  private baseUrl = 'http://localhost:8000/api/v1/signUp';
+  private baseUrl = 'http://localhost:8000/api/v1/signup';
 
   constructor(private http: HttpClient) { }
 
-  create(data):Observable<any>{
-    const headers = new HttpHeaders({'Content-Type':'application/json'});
-    return this.http.post(`${this.baseUrl}`,data,{headers:headers}).pipe(map((res=>res)));
+  create(data): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.baseUrl}`, data, { headers: headers }).pipe(map((res => res)));
   }
 
 

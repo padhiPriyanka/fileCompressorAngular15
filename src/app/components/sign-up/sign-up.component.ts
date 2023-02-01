@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -15,13 +15,15 @@ export class SignUpComponent {
   constructor(private router: Router,
     private userService: UserService,
     private response: ResponseService,
-   ) { }
+  ) { }
 
-    user: User = {
-      name: '',
-      email: '',
-      password: ''
-    };
+
+  signUpUser: any[]
+  user: User = {
+    name: '',
+    email: '',
+    password: ''
+  };
 
   hide = true;
   checked = false;
@@ -35,6 +37,8 @@ export class SignUpComponent {
       next: (res) => {
         console.log(res);
         console.log('registration succesful');
+        this.signUpUser.push(this.user);
+        localStorage.setItem('signUpUser', JSON.stringify(this.signUpUser));
         this.response.success('Registration Successful', true);
         this.router.navigate(['login']);
       },
@@ -45,7 +49,7 @@ export class SignUpComponent {
     });
   }
 
-  selectedCheckbox(){
+  selectedCheckbox() {
     return !this.checked
   }
 
@@ -70,8 +74,8 @@ export class SignUpComponent {
     return this.password.hasError('minlength') ? 'Password must be of atleast 8 character' : '';
   }
 
-  
-  }
+
+}
 
 
 
