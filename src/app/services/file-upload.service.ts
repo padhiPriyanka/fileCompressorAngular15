@@ -1,32 +1,38 @@
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileUploadService {
 
-  private baseUrl: 'http://localhost:8080/api/v1';
+  private baseUrl = "http://localhost:8000/api/v1/compress";
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  upload(file:File):Observable<HttpEvent<any>>{
+  upload(pdf: File): Observable<any> {
     const formData: FormData = new FormData();
 
-    formData.append('file',file);
+    formData.append('pdf', pdf);
 
-    const req = new HttpRequest('POST',`${this.baseUrl}/upload`,formData,{
-      reportProgress:true,
-      responseType:'json'
-    });
-
-    return this.http.request(req);
+    const at = localStorage.getItem('access-token');
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${at}` });
+    return this.http.post(`${this.baseUrl}`, formData, { headers: headers });
 
   }
 
-  getFiles():Observable<any>{
-    return this.http.get(`${this.baseUrl}/files`);
+  downloadFile(): Observable<any> {
+
+    const filePath = localStorage.getItem('pdfFilePath');
+    const url = localStorage.getItem('pdfURL');
+    const at = localStorage.getItem('access-token');
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${at}` });
+
+    return this.http.get(`${url}${filePath}`, { observe: 'response', responseType: 'blob', headers: headers });
   }
+
+
 
 }

@@ -125,3 +125,5 @@ import { MatTableModule } from '@angular/material/table';
   
 })
 export class MaterialModule { }
+
+// cli ng g module name

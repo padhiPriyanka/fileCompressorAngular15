@@ -29,7 +29,9 @@ export class LoginComponent {
 
     this.authService.login(this.loginObj).subscribe({
       next: (res) => {
-        console.log(res);
+        console.log(res.access_token);
+        localStorage.setItem('access-token', res.access_token);
+        localStorage.setItem('refresh-token', res.refresh_token);
         console.log("login successful")
         this.router.navigateByUrl('/upload');
       },

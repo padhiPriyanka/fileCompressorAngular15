@@ -1,11 +1,45 @@
 <div class="container">
     <mat-card>
         <mat-card-actions>
-            <mat-card-title>Compress File</mat-card-title><br>
+            <mat-card-title><b>Compress PDF</b></mat-card-title><br>
         </mat-card-actions>
 
-        <!-- <mat-card-actions>
-               
+        <mat-card-actions>
+            <div>
+                <mat-toolbar>
+                    <input matInput [value]="fileName" />
+                    <input type="file" id="fileInput" (change)="selectFile($event)" name="fileInput" />
+                    <button [disabled]="choseFile(fileName)" class="upload_button" mat-raised-button
+                        (click)="accordion.openAll()">
+                        Upload
+                    </button>
+                </mat-toolbar>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<div>
+
+    <mat-accordion multi>
+        <mat-expansion-panel>
+            <h4>{{fileName}}</h4>
+            <button mat-raised-button (click)="upload()"><mat-icon>compress</mat-icon>Compress</button>
+            <button mat-raised-button (click)="download()"><mat-icon>download</mat-icon>Download</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-card-actions>
                 <button type="button" mat-raised-button (click)="fileInput.click()"><mat-icon matPrefix>search</mat-icon>Choose File</button>
                 <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="fileInput"> 
 
@@ -17,35 +51,16 @@
                     <span></span>
                   </mat-form-field>
         </mat-card-actions> -->
-        <mat-card-actions>
-            <mat-form-field>
-                <div>
-                    <mat-toolbar>
-                        <input matInput [value]="fileName" />
 
-                        <button mat-raised-button color="primary" [disabled]="!currentFile" (click)="upload()">
-                            Upload
-                        </button>
-                    </mat-toolbar>
+<!-- <div *ngIf="currentFile">
+            <mat-toolbar> 
+                <mat-progress-bar [value]="progress"></mat-progress-bar>
+                <span>{{progress}}%</span> 
 
-                    <input type="file" id="fileInput" (change)="selectFile($event)" name="fileInput" />
-                </div>
-            </mat-form-field>
-        </mat-card-actions>
-
-        
-            <mat-toolbar *ngIf="currentFile">
-                <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
-                <span>{{progress}}%</span>
+                <h4>{{fileName}}</h4>
+                <button mat-raised-button><mat-icon>compress</mat-icon>Compress</button>
             </mat-toolbar>
-       
-
-    </mat-card>
-</div>
-
-
-
-
+        </div> -->
 
 
 

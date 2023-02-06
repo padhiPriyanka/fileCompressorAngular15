@@ -24,10 +24,8 @@ export class AuthenticationService {
   login(data): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.baseUrl}`, data, { headers: headers }).pipe(map(user => {
-
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('user', JSON.stringify(user));
       this.userSubject.next(user);
+      return user
     }
     ));
 

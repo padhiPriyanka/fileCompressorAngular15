@@ -1,72 +1,79 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FileUploadService } from 'src/app/services/file-upload.service';
+import { MatAccordion } from '@angular/material/expansion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css']
 })
-export class FileUploadComponent implements OnInit{
-
-  constructor(private uploadService: FileUploadService){}
-
-  ngOnInit():void{
-    this.fileInfos = this.uploadService.getFiles();
-  }
+export class FileUploadComponent {
 
 
-  currentFile ?: File;
-  progress= 0;
+  @ViewChild(MatAccordion) accordion: MatAccordion;
+  constructor(private uploadService: FileUploadService,
+    private route: Router) { }
+
+  currentFile?: File;
+  progress = 0;
   fileName = 'Select File';
-  // selectedFile = ''
 
-  fileInfos ?: Observable<any>;
+  selectFile(event: any): void {     //It helps to get  the currentFile
 
-  selectFile(event:any):void{     //It helps to get  the currentFile
-
-    if(event.target.files && event.target.files[0]){
-      const file : File = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      const file: File = event.target.files[0];
       this.currentFile = file;
       this.fileName = this.currentFile.name;
     }
-    else{
+    else {
       this.fileName = 'Select File';
     }
   }
 
-  upload(){     // to upload file
-
-    this.progress=0;
-
-    if(this.currentFile){
+  upload() {     // to upload file
+    if (this.currentFile) {
       this.uploadService.upload(this.currentFile).subscribe({
-       next:(event) => {
-        if(event.type === HttpEventType.UploadProgress){
-          if(event?.loaded && event?.total){
-            this.progress = Math.round(100*event.loaded / event.total);
-          } 
-        }else if(event instanceof HttpResponse){
-            this.fileInfos = this.uploadService.getFiles();
+        next: (res) => {
+          console.log(res);
+          console.log("pdf uploaded");
+          localStorage.getItem('access-token');
+          localStorage.setItem('pdfURL', res.baseUrl);
+          localStorage.setItem('pdfFilePath', res.filePath);
+        },
+        error: (e) => {
+          console.error(e);
         }
-       },
-
-      error : (e) =>{
-        console.log(e);
-        this.progress = 0;
-        this.currentFile = undefined;
-      }
       });
     }
   }
-  
-  
-  // onFileSelected(event:any){
-  //   this.selectedFile = event.target.files[0];
-  //   this.uploadService.upload(event.file).subscribe(event => {
-  //       console.log('uploaded successfully');
-  //   });
-  // }
+
+  choseFile(fileName): boolean {
+    if (fileName == 'Select File') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+
+  download() {
+    this.uploadService.downloadFile().subscribe({
+      next: (res) => {
+        let fileName = res.url?.split('/')
+        console.log(fileName[4]);
+        let blob: Blob = res.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName[4];
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      },
+      error: (e) => {
+        console.error(e);
+      }
+    })
+  }
 
 }

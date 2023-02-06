@@ -18,7 +18,7 @@ export class SignUpComponent {
   ) { }
 
 
-  signUpUser: any[]
+  // signUpUser: any[]
   user: User = {
     name: '',
     email: '',
@@ -37,8 +37,9 @@ export class SignUpComponent {
       next: (res) => {
         console.log(res);
         console.log('registration succesful');
-        this.signUpUser.push(this.user);
-        localStorage.setItem('signUpUser', JSON.stringify(this.signUpUser));
+        // this.signUpUser.push(this.user);
+        // console.log(this.signUpUser);
+        // localStorage.setItem('signUpUser', JSON.stringify(this.signUpUser));
         this.response.success('Registration Successful', true);
         this.router.navigate(['login']);
       },
