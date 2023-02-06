@@ -1,0 +1,40 @@
+.container {
+
+    color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+  
+  }
+  mat-card{
+    width: fit-content;
+    background-color: white;
+    align-items: center;
+    display: flex;
+  }
+  mat-card-title{
+    text-align: center;
+    font-weight: bold;
+    font-size:xx-large;
+    color: rgb(207, 86, 86); 
+  }
+  a{
+    
+    color: rgb(207, 86, 86); 
+    font-weight: 550;
+  }
+  p{
+    color: rgb(49, 47, 47); 
+    font-weight: 550;
+  }
+  .mat-mdc-raised-button.mat-unthemed {
+    --mdc-protected-button-container-color: #d43e3e;
+    --mdc-protected-button-label-text-color: #fff;
+  }
+  /* .mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color:rgb(42, 31, 201)!important;
+  }
+  ::ng-deep.mat-form-field{
+    background-color: rgb(196, 26, 26) !important;
+  } */

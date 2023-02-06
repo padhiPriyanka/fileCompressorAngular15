@@ -1,0 +1,95 @@
+<div class="container">
+    <mat-card>
+        <mat-card-actions>
+            <mat-card-title><b>Compress PDF</b></mat-card-title><br>
+        </mat-card-actions>
+
+        <mat-card-actions>
+            <div>
+                <mat-toolbar>
+                    <input matInput [value]="fileName" />
+                    <input type="file" id="fileInput" (change)="selectFile($event)" name="fileInput" />
+                    <button [disabled]="choseFile(fileName)" class="upload_button" mat-raised-button
+                        (click)="accordion.openAll()">
+                        Upload
+                    </button>
+                </mat-toolbar>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<div>
+
+    <mat-accordion multi>
+        <mat-expansion-panel>
+            <h4>{{fileName}}</h4>
+            <button mat-raised-button (click)="upload()"><mat-icon>compress</mat-icon>Compress</button>
+            <button mat-raised-button (click)="download()"><mat-icon>download</mat-icon>Download</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-card-actions>
+                <button type="button" mat-raised-button (click)="fileInput.click()"><mat-icon matPrefix>search</mat-icon>Choose File</button>
+                <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="fileInput"> 
+
+                 <button type="button" [value]="fileName" mat-raised-button (click)="fileInput.click()"><mat-icon matPrefix>search</mat-icon>Choose File</button>
+                <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="fileInput">
+
+                <mat-form-field >
+                    <input  [value]="fileName" (change)="onFileSelected($event)"  type="file" id="fileInput">
+                    <span></span>
+                  </mat-form-field>
+        </mat-card-actions> -->
+
+<!-- <div *ngIf="currentFile">
+            <mat-toolbar> 
+                <mat-progress-bar [value]="progress"></mat-progress-bar>
+                <span>{{progress}}%</span> 
+
+                <h4>{{fileName}}</h4>
+                <button mat-raised-button><mat-icon>compress</mat-icon>Compress</button>
+            </mat-toolbar>
+        </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-card-actions>
+    <mat-card-content>
+        <button type="file" mat-raised-button ><mat-icon>search</mat-icon>Choose File</button>
+    </mat-card-content> 
+</mat-card-actions>
+
+<mat-toolbar>
+    <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
+</mat-toolbar> -->

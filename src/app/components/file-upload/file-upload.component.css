@@ -1,0 +1,41 @@
+.container {
+
+    color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  mat-card{
+    height: 10rem;
+    border-radius: 10px;
+    background-color: rgb(207, 86, 86);
+    align-items: center;
+    display: flex;
+    margin-top: 5rem;
+  }
+  #fileInput {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    height: 20%;
+    left: 10px;
+    top: 68px;
+    width: 60%;
+  }
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+    padding: 0;
+  }
+  .upload_button{
+    margin-left: 20px;
+  }
+  .mat-mdc-form-field {
+    display:inline-block;
+  };
+  
+  
+
+ 

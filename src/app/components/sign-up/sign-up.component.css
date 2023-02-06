@@ -1,0 +1,37 @@
+.container {
+
+    color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+  
+  }
+  mat-card{
+    width: fit-content;
+    background-color: white;
+    align-items: center;
+    display: flex;
+  }
+  mat-card-title{
+    text-align: center;
+    font-weight:600;
+    font-size:x-large;
+    color: rgb(207, 86, 86); 
+  }
+  a{
+    color:rgb(207, 86, 86); 
+    font-weight: 500;
+  }
+  p{
+    color: rgb(49, 47, 47);
+    font-weight: 550;
+  }
+ span{
+    color: rgb(49, 47, 47);
+    font-weight: 550;
+ }
+ /* .mat-mdc-raised-button.mat-unthemed {
+  --mdc-protected-button-container-color: #d43e3e;
+  --mdc-protected-button-label-text-color: #fff;
+} */

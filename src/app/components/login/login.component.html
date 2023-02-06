@@ -1,0 +1,39 @@
+<div class="container">
+    <mat-card>
+
+      <mat-card-title>Log In</mat-card-title><br>
+      <mat-card-actions>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="abc@example.com" [formControl]="email" required [(ngModel)]="loginObj.email">
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-icon matSuffix>mail_outline</mat-icon>
+        </mat-form-field>
+      </mat-card-actions>
+        
+        <mat-card-actions>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required [(ngModel)]="loginObj.password">
+            <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-card-actions>
+         
+        <mat-card-actions>
+          <div>
+            <button mat-raised-button (click)="onLogin()">LOG IN</button>
+          </div>
+        </mat-card-actions>
+
+        <mat-card-actions>
+          <a>Forgot your password?</a>
+        </mat-card-actions>
+
+        <mat-card-actions>
+          <p>New member? <span><a routerLink="/signup">Sign Up</a></span></p>
+        </mat-card-actions>
+    </mat-card>
+</div>
