@@ -8,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class FileUploadService {
 
-  private baseUrl = "http://localhost:8000/api/v1/compress";
+  private baseUrl = "http://localhost:8000/api/v1";
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class FileUploadService {
 
     const at = localStorage.getItem('access-token');
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${at}` });
-    return this.http.post(`${this.baseUrl}`, formData, { headers: headers });
+    return this.http.post(`${this.baseUrl}/compress`, formData, { headers: headers });
 
   }
 
@@ -31,6 +31,16 @@ export class FileUploadService {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${at}` });
 
     return this.http.get(`${url}${filePath}`, { observe: 'response', responseType: 'blob', headers: headers });
+  }
+
+  uploadImage(img:File):Observable<any>{
+    const formData: FormData = new FormData();
+
+    formData.append('picture', img);
+
+    const at = localStorage.getItem('access-token');
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${at}` });
+    return this.http.post(`${this.baseUrl}/reduce`, formData, { headers: headers });
   }
 
 

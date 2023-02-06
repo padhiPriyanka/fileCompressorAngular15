@@ -1,0 +1,10 @@
+.box{
+    margin: 0 auto;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.inline-block{
+    display: inline-block;
+}

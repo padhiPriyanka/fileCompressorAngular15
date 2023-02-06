@@ -1,1 +1,31 @@
-<p>image-upload works!</p>
+<div class="container">
+    <mat-card>
+        <mat-card-actions>
+            <mat-card-title><b>Compress Image</b></mat-card-title><br>
+        </mat-card-actions>
+
+        <mat-card-actions>
+            <div>
+                <mat-toolbar>
+                    <input matInput [value]="fileName" />
+                    <input type="file" id="fileInput" (change)="selectFile($event)" name="fileInput" />
+                    <button [disabled]="choseFile(fileName)" class="upload_button" mat-raised-button
+                        (click)="accordion.openAll()">
+                        Upload
+                    </button>
+                </mat-toolbar>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<div>
+
+    <mat-accordion multi>
+        <mat-expansion-panel>
+            <h4>{{fileName}}</h4>
+            <button mat-raised-button (click)="upload()"><mat-icon>compress</mat-icon>Compress</button>
+            <button mat-raised-button (click)="download()"><mat-icon>download</mat-icon>Download</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

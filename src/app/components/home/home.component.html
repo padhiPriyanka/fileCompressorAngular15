@@ -1,8 +1,24 @@
-<app-file-upload routerLink="upload" routerLinkActive="active"></app-file-upload>
+<mat-grid-list cols="2">
+        <mat-grid-tile>
+                <app-file-upload  routerLinkActive="active"></app-file-upload>
+        </mat-grid-tile>
+        <mat-grid-tile>
+                <app-image-upload  routerLinkActive="active"></app-image-upload>
+        </mat-grid-tile>
+</mat-grid-list>
 <router-outlet></router-outlet>
+<!-- <div>
+        <div row>
+                <div col-6>
+                        <app-file-upload  routerLinkActive="active"></app-file-upload>
+                </div>
+                <div col-6>
+                        <app-image-upload  routerLinkActive="active"></app-image-upload>
+                </div>
+        </div>
+</div> -->
 
-<!-- <mat-icon>get_app</mat-icon>
-        <mat-icon>perm_media</mat-icon>
-        <mat-icon>source</mat-icon>
-        <mat-icon>backup</mat-icon>
-         -->
+
+
+
+

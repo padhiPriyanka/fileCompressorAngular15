@@ -33,7 +33,7 @@ export class LoginComponent {
         localStorage.setItem('access-token', res.access_token);
         localStorage.setItem('refresh-token', res.refresh_token);
         console.log("login successful")
-        this.router.navigateByUrl('/upload');
+        this.router.navigateByUrl('');
       },
       error: (e) => {
         console.log(e);
